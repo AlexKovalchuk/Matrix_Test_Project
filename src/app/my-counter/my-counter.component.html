@@ -1,0 +1,8 @@
+<div class="counter-container">
+  <h3>Counter</h3>
+  <button (click)="increment()">Increment</button>
+  <button (click)="decrement()">Decrement</button>
+  <button (click)="reset()">Reset Counter</button>
+
+  <div class="current-counter">Current Count: {{ count$ | async }}</div>
+</div>
