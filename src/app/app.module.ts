@@ -1,18 +1,26 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { NgModule }            from '@angular/core';
+import { BrowserModule }       from '@angular/platform-browser';
+import { StoreModule }         from '@ngrx/store';
+import { counterReducer }      from './counter.reducer';
+import { AppRoutingModule }    from './app-routing.module';
+import { AppComponent }        from './app.component';
+import { MyCounterComponent }  from './my-counter/my-counter.component';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment }         from '../environments/environment';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MyCounterComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    StoreModule.forRoot({ count: counterReducer }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+}
